@@ -1,0 +1,237 @@
+overlayTextColor = white
+#main
+  width 980px
+#ad-special
+  display none !important
+#article
+  width 1000px
+  padding 0px
+  font-family 'Roboto', arial, helvetica,sans-serif
+  background transparent !important
+  .date
+  .image
+    display none
+  > h1
+    font-size 36px !important
+    font-weight 300
+    margin-top 34px !important
+    line-height 67.9px
+    margin-bottom 40px !important
+    color overlayTextColor
+    text-shadow 0px 0px 10px #0
+    position absolute
+    margin-left 50px !important
+    text-align right
+  p.perex
+    position absolute
+    top 177px
+    padding-left 600px
+    width (950px - 600px)
+    font-weight 100
+    text-align left
+    line-height 45px
+    font-size 20px
+    color overlayTextColor
+    text-shadow 0px 0px 10px #0
+    margin 0px
+  > p
+  > ul > li
+    line-height 1.9em
+    font-size 16px
+  > h2
+  > h3
+  > p
+  > ul
+    width 485px
+    margin-left 258px
+    float left
+    margin-right 0px
+  > ul
+    margin 0px 0px 15px 0px
+    list-style square
+    > li
+      padding-left 17px
+      // margin-left 26px !important
+      margin-bottom 5px !important
+  h2
+    font-size 28px
+    font-weight 900
+    margin-top 1.5em
+  p + img
+    position relative
+    left -30px
+  p + h2
+    margin-top 2em
+  p[data-unhide]
+    font-size 14px
+    color #666
+    padding-left 35px
+    position relative
+    &:before
+      content "▶"
+      line-height 18px
+      text-align center
+      font-size 15px
+      position absolute
+      transform rotate(90deg)
+      top 3px
+      left 5px
+      height 19px
+      color white
+      padding-left 1px
+      width (@height - @padding-left)
+      background #b
+      border-radius 50%
+      transition background 0.3s
+    &:hover
+      cursor pointer
+      &:before
+        background #6
+
+    &.unhidden
+      display none
+  p[data-hidden]
+    display none
+    opacity 0
+    transition opacity 0.8s
+    &.unhidden
+      display block
+      color #8
+      border-left 2px solid #e
+      padding-left 12px
+  .relatedWebs
+    margin-top 70px !important
+    float left
+    width 980px
+  p iframe
+    max-width none
+    border-top 1px solid #c
+    border-bottom 1px solid #c
+    padding-top 20px
+    margin 20px 0px
+    position relative
+    left -450px
+
+.author
+  margin-top 60px !important
+#wrapper-inner
+  background transparent !important
+  padding 0px !important
+.filling
+  width 100%
+  height 600px
+div.hero
+  font-family 'Roboto', arial, helvetica,sans-serif
+  position absolute
+  top 126px
+  bottom 0px
+  width 100%
+  min-width 1000px
+  background #6 url('https://samizdat.cz/data/zelen-mesta-www/www/img/cover.jpg') no-repeat center top
+  background-size cover
+  .overlay
+    position absolute
+    top 0px
+    left 0px
+    bottom 0px
+    width 100%
+    background linear-gradient(to top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.5) 25%);
+    position absolute
+  span.copy
+    color overlayTextColor
+    position absolute
+    bottom 10px
+    right 10px
+    z-index 2
+    text-shadow 0px 0px 10px #0
+    font-weight 200
+    a
+      color overlayTextColor
+      text-decoration underline
+      &:hover
+        text-decoration none
+  a.scroll-btn
+    z-index 2
+    position absolute
+    top 360px
+    left 50%
+    margin-left (250px + -476px)
+    text-transform uppercase
+    color overlayTextColor
+    font-weight 200
+    font-size 18px
+    text-shadow 0px 0px 10px #0
+    text-decoration none
+    padding-bottom 2px
+    transition border-bottom 0.2s
+    border-bottom 1px solid rgba(255,255,255,1)
+    &:hover
+    &:active
+      border-bottom 1px solid rgba(255,255,255,0)
+    &:hover:before
+      transform translate(-50%, 0) rotate(90deg) scale(1.1)
+      background rgba(255,255,255,0.1)
+    &:before
+      background rgba(255,255,255,0.05)
+      transition transform 0.6s, background 0.6s
+      content "›"
+      position absolute
+      top -80px
+      left 50%
+      transform translate(-50%, 0) rotate(90deg)
+      text-align center
+      line-height 52px
+      font-size 50px
+      width 60px
+      height 60px
+      border 1px solid overlayTextColor
+      font-weight 300
+      box-shadow 0px 0px 5px #fff
+      border-radius 50%
+  .shares
+    position absolute
+    bottom 0px
+    left 90px
+    height 60px
+    z-index 3
+    &.fixed
+      position fixed
+      top 0px
+    &:hover
+      opacity 1
+    a
+      display block
+      float left
+      width @height
+      height @width
+      position relative
+      transition background 0.2s
+      img
+        max-height (@height - 28px)
+        max-width (@height - 20px)
+        width auto
+        height auto
+        position absolute
+        top 50%
+        left 50%
+        transform translate(-50%,-50%)
+        opacity 1
+        transition opacity 0.2s
+      &:hover
+        img
+          opacity 0.9
+      &.fb
+        background #3F67C0
+        &:hover
+          background darken(#3F67C0, 20%)
+      &.tw
+        background #35B5EB
+        &:hover
+          background darken(#35B5EB, 20%)
+
+.web-zpravy
+  background white url('https://samizdat.cz/tools/cro-parts/bg.png')  repeat-x !important
+  #nav-sub
+    background-image none
+    .sub
+      display none

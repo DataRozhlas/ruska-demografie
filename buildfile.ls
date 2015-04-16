@@ -10,8 +10,8 @@ externalStyles =
   # \https://samizdat.cz/tools/tooltip/v1.1.4.css
   ...
 
-externalData = {}
-  # "leky": "#__dirname/data/leky.tsv"
+externalData =
+  "style": "#__dirname/www/screen.css"
 
 preferScripts = <[ postInit.js _loadData.js ../data.js init.js _loadExternal.js]>
 deferScripts = <[ Graph.js base.js ]>
@@ -278,7 +278,7 @@ switch task
   <~ build-styles compression: yes deploy: yes
   <~ build-all-scripts
   <~ combine-scripts compression: yes deploy: yes
-  <~ inject-index!
+  # <~ inject-index!
   <~ gzip-files!
   <~ deploy-files!
 
