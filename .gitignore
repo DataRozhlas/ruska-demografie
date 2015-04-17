@@ -19,3 +19,4 @@
 /www/index.html*
 /*.sublime-workspace
 azure-upload-settings.json
+/data/gadm
