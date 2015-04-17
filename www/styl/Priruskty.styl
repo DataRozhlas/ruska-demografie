@@ -1,9 +1,21 @@
 &.prirustky
   svg
-    circle
+    circle.point
       fill #d73027
       fill-opacity 0.7
-    line
+    g.highlight
+      circle
+        fill none
+        stroke #b
+        stroke-dasharray 3, 1.5
+      line
+        shape-rendering crispEdges
+        stroke #a
+        stroke-dasharray 3, 2
+      text
+        font-size 10px
+        text-transform uppercase
+    line.sustainment-line
       stroke #a
       shape-rendering crispEdges
       stroke-dasharray 3, 4

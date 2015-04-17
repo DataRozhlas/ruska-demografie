@@ -8,25 +8,26 @@ class ig.Prirustky
   drawCorrelator: (features) ->
     ele = @parentElement.select "div.col:nth-child(4) div"
     height = width = ele.node!clientWidth
-    svg = ele.append \svg
+    @svg = svg = ele.append \svg
       ..attr {width, height}
     padding = 10
 
-    x = d3.scale.linear!
+    @x = d3.scale.linear!
       ..domain d3.extent features.map (.rusu)
       ..range [width - padding, padding]
-    y = d3.scale.linear!
+    @y = d3.scale.linear!
       ..domain d3.extent features.map (.plodnost)
       ..range [height - padding, padding]
 
     svg.append \g
       ..selectAll \circle .data features .enter!append \circle
+        ..attr \class \point
         ..attr \r 2
-        ..attr \cx -> x it.rusu
-        ..attr \cy -> y it.plodnost
+        ..attr \cx ~> @x it.rusu
+        ..attr \cy ~> @y it.plodnost
 
     svg.append \g
-      ..attr \transform "translate(0, #{y 2})"
+      ..attr \transform "translate(0, #{@y 2})"
       ..append \text
         ..text "hranice přežití"
         ..attr \x padding
@@ -36,6 +37,7 @@ class ig.Prirustky
         ..attr \x padding
         ..attr \dy -5
       ..append \line
+        ..attr \class \sustainment-line
         ..attr \x1 padding
         ..attr \x2 width - padding
         ..attr \y1 0
@@ -51,6 +53,25 @@ class ig.Prirustky
       ..attr \text-anchor \end
       ..attr \transform "rotate(90, #{width - padding}, #{height - padding})"
       ..text "Nižší plodnost ›"
+    @highlightPoint @svg, features[33], -13, "Ingušsko"
+
+
+  highlightPoint: (parent, feature, dx, text) ->
+    direction = (if dx > 0 then 1 else -1)
+    g = @svg.append \g
+      ..attr \class \highlight
+      ..attr \transform "translate(#{@x feature.rusu}, #{@y feature.plodnost})"
+      ..append \circle
+        ..attr \class \highlight
+        ..attr \r 5.5
+      ..append \line
+        ..attr \x1 5.5 * direction
+        ..attr \x2 dx
+      ..append \text
+        ..text text
+        ..attr \text-anchor \end
+        ..attr \x dx + 5 * direction
+        ..attr \dy 3
 
 
   drawMap: (features) ->
@@ -95,6 +116,9 @@ class ig.Prirustky
     for line in d3.tsv.parse oblastData
       ids = line.id.split ","
       for id in ids
-        features_assoc[id].plodnost = parseFloat line['plodnost']
-        features_assoc[id].rusu = parseFloat line['rusu']
+        features_assoc[id]
+          ..plodnost = parseFloat line['plodnost']
+          ..rusu = parseFloat line['rusu']
+          ..nazev = line['region']
+
     features
