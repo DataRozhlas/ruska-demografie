@@ -12,9 +12,11 @@ externalStyles =
 
 externalData =
   "style": "#__dirname/www/screen.css"
+  "rus-adm-topo": "#__dirname/data/rus-adm.topo.json"
+  "narodnosti-porodnost": "#__dirname/data/narodnosti-porodnost.tsv"
 
 preferScripts = <[ postInit.js _loadData.js ../data.js init.js _loadExternal.js]>
-deferScripts = <[ Graph.js base.js ]>
+deferScripts = <[ geoUtils.js base.js ]>
 develOnlyScripts = <[ _loadData.js _loadExternal.js]>
 gzippable = <[ www/index.deploy.html www/script.deploy.js ]>
 safe-deployable =
