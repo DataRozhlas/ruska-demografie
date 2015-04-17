@@ -3,6 +3,55 @@ class ig.Prirustky
   (@parentElement, @topoJson, @oblastData) ->
     features = @processData @topoJson, @oblastData
     @drawMap features
+    @drawCorrelator features
+
+  drawCorrelator: (features) ->
+    ele = @parentElement.select "div.col:nth-child(4) div"
+    height = width = ele.node!clientWidth
+    svg = ele.append \svg
+      ..attr {width, height}
+    padding = 10
+
+    x = d3.scale.linear!
+      ..domain d3.extent features.map (.rusu)
+      ..range [width - padding, padding]
+    y = d3.scale.linear!
+      ..domain d3.extent features.map (.plodnost)
+      ..range [height - padding, padding]
+
+    svg.append \g
+      ..selectAll \circle .data features .enter!append \circle
+        ..attr \r 2
+        ..attr \cx -> x it.rusu
+        ..attr \cy -> y it.plodnost
+
+    svg.append \g
+      ..attr \transform "translate(0, #{y 2})"
+      ..append \text
+        ..text "hranice přežití"
+        ..attr \x padding
+        ..attr \dy -21
+      ..append \text
+        ..text "2 děti na jednu matku"
+        ..attr \x padding
+        ..attr \dy -5
+      ..append \line
+        ..attr \x1 padding
+        ..attr \x2 width - padding
+        ..attr \y1 0
+        ..attr \y2 0
+    svg.append \text
+      ..attr \x width - padding
+      ..attr \y height - padding
+      ..attr \text-anchor \end
+      ..text "Méně etnických Rusů ›"
+    svg.append \text
+      ..attr \x width - padding - 15
+      ..attr \y height - 8
+      ..attr \text-anchor \end
+      ..attr \transform "rotate(90, #{width - padding}, #{height - padding})"
+      ..text "Nižší plodnost ›"
+
 
   drawMap: (features) ->
     {geo} = ig.utils
@@ -24,7 +73,6 @@ class ig.Prirustky
       ..selectAll \path .data features .enter!append \path
         ..attr \d (.d)
         ..attr \fill -> color it.rusu
-    console.log d3.extent features.map (.plodnost)
     color2 = d3.scale.linear!
       ..domain ig.utils.divideToParts do
         d3.extent features.map (.plodnost)
