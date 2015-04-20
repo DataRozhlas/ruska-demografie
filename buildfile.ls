@@ -15,6 +15,7 @@ externalData =
   "rus-adm-topo": "#__dirname/data/rus-adm.topo.json"
   "narodnosti-porodnost": "#__dirname/data/narodnosti-porodnost.tsv"
   "rusko-92": "#__dirname/data/rusko-92.tsv"
+  "cesko-92": "#__dirname/data/cesko-92.tsv"
 
 preferScripts = <[ postInit.js _loadData.js ../data.js init.js _loadExternal.js]>
 deferScripts = <[ geoUtils.js base.js ]>
