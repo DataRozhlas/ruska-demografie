@@ -2,6 +2,7 @@ getRusko92 = ->
   fields =
     doziti:
       title: "Věk dožití"
+      fixedYExtent: [20, 65.73]
     "externi-umrti":
       title: "Úmrtí na externí příčiny"
     plodnost:
