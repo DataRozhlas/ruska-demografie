@@ -14,6 +14,7 @@
         fill white
         stroke-width 1px
         &.significant
+        &.active
           fill RussianBlue
       g.axis
         line.full-extent
@@ -34,11 +35,15 @@
       display none
     svg
       margin-top 20px
+  g.active-lines line.active
+    shape-rendering crispEdges
+    stroke lighten(desaturate(RussianBlue, 40%), 40%)
   .col.other-color
     svg
       circle
         stroke RussianRed
         &.significant
+        &.active
           fill RussianRed
       path
         stroke RussianRed
@@ -50,7 +55,29 @@
             stroke RussianRed
         text
           fill darken(RussianRed, 50%)
+      g.active-lines line.active
+        stroke lighten(desaturate(RussianRed, 40%), 30%)
+  g.interaction rect
+    fill transparent
+  svg
+    circle.significant
+    g.axis text.significant
+    g.axis line.mark
+      transition fill 0.2s, opacity 0.2s
+    text.active-text
+      opacity 0
+  .col svg.active
+    circle.significant:not(.active)
+    circle.significant:not(.active)
+      fill white
+    g.axis
+      text.significant
+      line.mark
+        opacity 0
+    text.active-text.active
+      opacity 1
+
   &.lines-russia-czech
     .col:nth-child(7)
-      g.axis.y text:last-of-type
+      g.axis.y text:nth-of-type(3)
         display none
