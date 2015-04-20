@@ -16,12 +16,16 @@
         &.significant
           fill RussianBlue
       g.axis
+        line.full-extent
+          stroke #d3
+          shape-rendering crispEdges
         line.extent
         line.mark
-          stroke #d
+          stroke lighten(desaturate(RussianBlue, 40%), 40%)
           shape-rendering crispEdges
           &.significant
             stroke RussianBlue
+            stroke-width 2
         text
           font-size 11px
           fill darken(RussianBlue, 50%)
@@ -39,8 +43,11 @@
       path
         stroke RussianRed
       g.axis
-        line.mark.significant
-          stroke RussianRed
+        line.extent
+        line.mark
+          stroke lighten(desaturate(RussianRed, 40%), 30%)
+          &.significant
+            stroke RussianRed
         text
           fill darken(RussianRed, 50%)
   &.lines-russia-czech

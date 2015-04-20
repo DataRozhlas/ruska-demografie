@@ -54,6 +54,10 @@ class ig.Lines
           ..attr \class "axis x"
           ..attr \transform "translate(#{padding.left},#{height - 15})"
           ..append \line
+            ..attr \class \full-extent
+            ..attr \x1 -10
+            ..attr \x2 innerWidth
+          ..append \line
             ..attr \class \extent
             ..attr \x1 -> xScale it.data.0.x
             ..attr \x2 -> xScale it.data[*-1].x
@@ -71,6 +75,10 @@ class ig.Lines
         ..append \g
           ..attr \class "axis y"
           ..attr \transform "translate(37,#{padding.top})"
+          ..append \line
+            ..attr \class \full-extent
+            ..attr \y1 0
+            ..attr \y2 innerHeight + 10
           ..append \line
             ..attr \class \extent
             ..attr \y1 (d, i) -> yScales[i] d.yExtent.0
