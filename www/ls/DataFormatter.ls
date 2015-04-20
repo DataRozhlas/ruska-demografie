@@ -43,9 +43,9 @@ getCesko92 = ->
 
     field.id = id
     out.push field
-  out[0, 3].forEach (.fixedYExtent = [50, 69.5])
-  out[1, 4].forEach (.fixedYExtent = [0, 17.78])
-  out[2, 5].forEach (.fixedYExtent = [0, 2.23])
+  out[0, 3].forEach (.fixedYExtent = [56, 69.5])
+  out[1, 4].forEach (.fixedYExtent = [10.7, 17.78])
+  out[2, 5].forEach (.fixedYExtent = [1.3, 2.23])
   out
 
 
