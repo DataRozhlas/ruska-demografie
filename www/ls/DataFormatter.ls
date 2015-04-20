@@ -7,8 +7,8 @@ getRusko92 = ->
       title: "Úmrtí na externí příčiny"
     plodnost:
       title: "Plodnost"
-    imigrace:
-      title: "Imigrace"
+    prirustek:
+      title: "Přírůstek obyvatel"
       yFormat: -> ig.utils.formatNumber it, 0
   tsv = d3.tsv.parse ig.data['rusko-92'], (row) ->
     for field, value of row
