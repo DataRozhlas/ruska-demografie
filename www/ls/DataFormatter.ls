@@ -9,7 +9,6 @@ getRusko92 = ->
       title: "Plodnost"
     prirustek:
       title: "Přírůstek obyvatel"
-      yFormat: -> ig.utils.formatNumber it, 0
   tsv = d3.tsv.parse ig.data['rusko-92'], (row) ->
     for field, value of row
       row[field] = parseFloat value
@@ -24,7 +23,7 @@ getRusko92 = ->
   out
 
 getCesko92 = ->
-  out = getRusko92!slice 0, 3
+  out = getRusko92!
   fields =
     doziti:
       title: "Věk dožití"
@@ -32,6 +31,8 @@ getCesko92 = ->
       title: "Úmrtí na externí příčiny"
     plodnost:
       title: "Plodnost"
+    prirustek:
+      title: "Přírůstek obyvatel"
   tsv = d3.tsv.parse ig.data['cesko-92'], (row) ->
     for field, value of row
       row[field] = parseFloat value
@@ -43,9 +44,10 @@ getCesko92 = ->
 
     field.id = id
     out.push field
-  out[0, 3].forEach (.fixedYExtent = [56, 69.5])
-  out[1, 4].forEach (.fixedYExtent = [10.7, 17.78])
-  out[2, 5].forEach (.fixedYExtent = [1.3, 2.23])
+  out[0, 4].forEach (.fixedYExtent = [56, 69.5])
+  out[1, 5].forEach (.fixedYExtent = [0.9, 3.36])
+  out[2, 6].forEach (.fixedYExtent = [1.3, 2.23])
+  out[3, 7].forEach (.fixedYExtent = [0.61, 1.66])
   out
 
 
