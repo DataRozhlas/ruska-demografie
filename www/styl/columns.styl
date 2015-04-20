@@ -4,9 +4,9 @@
   .col
     padding 0px 15px
     float left
-    &:first-child
-      padding-left 0px
-    &:last-child
+    &:nth-child(4n)
       padding-right 0px
+    &:nth-child(4n + 1)
+      padding-left 0px
     div
       width ((1000px - 90px) / 4)
