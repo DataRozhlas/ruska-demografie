@@ -4,3 +4,8 @@ if ig.containers['prirustky']
     d3.select that
     ig.data['rus-adm-topo']
     ig.data['narodnosti-porodnost']
+
+if ig.containers['line-russia']
+  new ig.Lines do
+    d3.select that
+    ig.DataFormatter.rusko92
