@@ -12,13 +12,17 @@
         stroke RussianBlue
         fill white
         stroke-width 1px
+        &.significant
+          fill RussianBlue
       g.axis
         line.extent
         line.mark
           stroke #d
           shape-rendering crispEdges
+          &.significant
+            stroke RussianBlue
         text
           font-size 11px
-          fill #7
+          fill darken(RussianBlue, 50%)
 
 

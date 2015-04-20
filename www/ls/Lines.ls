@@ -1,6 +1,5 @@
 class ig.Lines
   (@parentElement, @data) ->
-    console.log @data
     width = height = 227px
     minX = d3.min @data.map -> d3.min it.data.map (.x)
     maxX = d3.max @data.map -> d3.max it.data.map (.x)
@@ -12,11 +11,15 @@ class ig.Lines
       ..range [0, innerWidth]
     @data.forEach (line) ->
       extent = d3.extent line.data.map (.y)
-      line.yExtent = extent
-      line.significantYPoints = line.yExtent.slice!
+      min = max = line.data.0
+      for datum in line.data
+        max = datum if datum.y > max.y
+        min = datum if datum.y < min.y
+      line.yExtent = [min.y, max.y]
+      line.significantYPoints = [max, min]
       for endpoint in [line.data[0], line.data[*-1]]
-        if endpoint.y not in extent
-          line.significantYPoints.push endpoint.y
+        if endpoint not in line.significantYPoints
+          line.significantYPoints.push endpoint
     yScales = @data.map (line) ->
       extent = line.yExtent.slice!
       if extent.0 > 0 then extent.0 = 0
@@ -39,6 +42,7 @@ class ig.Lines
             ..attr \d ({data}, i) -> paths[i] data
           ..selectAll \circle.point .data (.data) .enter!append \circle
             ..attr \class \point
+            ..classed \significant (d, i, ii) ~> d in @data[ii].significantYPoints
             ..attr \cx ({x, y}, i) -> xScale x
             ..attr \cy ({x, y}, i, ii) -> yScales[ii] y
             ..attr \r 3
@@ -51,10 +55,11 @@ class ig.Lines
             ..attr \x2 -> xScale it.data[*-1].x
           ..selectAll \line.mark .data (.data) .enter!append \line
             ..attr \class \mark
+            ..classed \significant (d, i, ii) ~> d in @data[ii].significantYPoints
             ..attr \x1 -> xScale it.x
             ..attr \x2 -> xScale it.x
             ..attr \y2 3
-          ..selectAll \text .data (-> [it.data[0], it.data[*-1]]) .enter!append \text
+          ..selectAll \text .data (.significantYPoints) .enter!append \text
             ..attr \text-anchor \middle
             ..text -> it.x.toString!substr -2
             ..attr \y 15
@@ -68,6 +73,7 @@ class ig.Lines
             ..attr \y2 (d, i) -> yScales[i] d.yExtent.1
           ..selectAll \line.mark .data (.data) .enter!append \line
             ..attr \class \mark
+            ..classed \significant (d, i, ii) ~> d in @data[ii].significantYPoints
             ..attr \x1 0
             ..attr \x1 -3
             ..attr \y1 (d, i, ii) -> yScales[ii] d.y
@@ -75,14 +81,14 @@ class ig.Lines
           ..selectAll \text .data (.significantYPoints) .enter!append \text
             ..text (d, i, ii) ~>
               if @data[ii].yFormat
-                that d
+                that d.y
               else
                 decimals =
                   | d > 100 => 0
                   | d > 10 => 1
                   | otherwise => 2
-                ig.utils.formatNumber d, decimals
-            ..attr \y (d, i, ii) -> yScales[ii] d
+                ig.utils.formatNumber d.y, decimals
+            ..attr \y (d, i, ii) -> yScales[ii] d.y
             ..attr \dy 3
             ..attr \x -7
             ..attr \text-anchor \end
