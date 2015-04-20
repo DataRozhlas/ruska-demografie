@@ -20,12 +20,13 @@ class ig.Lines
       for endpoint in [line.data[0], line.data[*-1]]
         if endpoint not in line.significantYPoints
           line.significantYPoints.push endpoint
-    yScales = @data.map (line) ->
+    yScales = @data.map (line, i) ->
       if line.fixedYExtent
         extent = that
       else
         extent = line.yExtent.slice!
         if extent.0 > 0 then extent.0 = 0
+      console.log i, extent
       y = d3.scale.linear!
         ..domain extent
         ..range [innerHeight, 0]

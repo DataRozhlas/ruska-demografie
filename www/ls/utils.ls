@@ -28,8 +28,8 @@ utils.formatNumber = (input, decimalPoints = 0) ->
     wholePart = Math.floor input
     decimalPart = Math.abs input % 1
     decimalPart = Math.round decimalPart * Math.pow 10, decimalPoints
-    if decimalPart >= 10
-      decimalPart -= 10
+    if decimalPart >= Math.pow 10, decimalPoints
+      decimalPart -= Math.pow 10, decimalPoints
       wholePart += 1
     wholePart = insertThousandSeparator wholePart
     decimalPart = decimalPart.toString()
