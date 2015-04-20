@@ -74,7 +74,7 @@ class ig.Lines
             ..attr \class \extent
             ..attr \y1 (d, i) -> yScales[i] d.yExtent.0
             ..attr \y2 (d, i) -> yScales[i] d.yExtent.1
-          ..selectAll \line.mark .data (.data) .enter!append \line
+          ..selectAll \line.mark .data (-> it.data ++ it.significantYPoints) .enter!append \line
             ..attr \class \mark
             ..classed \significant (d, i, ii) ~> d in @data[ii].significantYPoints
             ..attr \x1 0
