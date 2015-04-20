@@ -32,7 +32,6 @@ getCesko92 = ->
       title: "Úmrtí na externí příčiny"
     plodnost:
       title: "Plodnost"
-      yFormat: -> ig.utils.formatNumber it, 0
   tsv = d3.tsv.parse ig.data['cesko-92'], (row) ->
     for field, value of row
       row[field] = parseFloat value
@@ -45,7 +44,7 @@ getCesko92 = ->
     field.id = id
     out.push field
   out[0, 3].forEach (.fixedYExtent = [50, 69.5])
-  out[1, 4].forEach (.fixedYExtent = [0, 3.36])
+  out[1, 4].forEach (.fixedYExtent = [0, 17.78])
   out[2, 5].forEach (.fixedYExtent = [0, 2.23])
   out
 
