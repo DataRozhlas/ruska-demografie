@@ -8,6 +8,7 @@ getRusko92 = ->
       title: "Plodnost"
     imigrace:
       title: "Imigrace"
+      yFormat: -> ig.utils.formatNumber it, 0
   tsv = d3.tsv.parse ig.data['rusko-92'], (row) ->
     for field, value of row
       row[field] = parseFloat value
