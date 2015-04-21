@@ -24,3 +24,7 @@ if ig.containers['line-external-deaths']
   new ig.Lines do
     d3.select that
     ig.DataFormatter.externi
+
+if ig.containers['strom']
+  new ig.Strom do
+    d3.select that
