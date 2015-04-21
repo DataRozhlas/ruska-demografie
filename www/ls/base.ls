@@ -13,4 +13,4 @@ if ig.containers['line-russia']
 if ig.containers['line-russia-czech']
   new ig.Lines do
     d3.select that
-    ig.DataFormatter.cesko92
+    ig.DataFormatter.ceskoRusko92
