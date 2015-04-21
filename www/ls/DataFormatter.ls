@@ -37,7 +37,18 @@ getCeskoRusko92 = ->
   out[3, 7].forEach (.fixedYExtent = [0.61, 1.66])
   out
 
+getCeskoRusko04 = ->
+  fieldsRusko = getCeskoRuskoFields!
+  out = parseData 'rusko-04', fieldsRusko
+  fieldsCesko = getCeskoRuskoFields!
+  out ++= parseData 'cesko-04', fieldsCesko
+  out[0, 4].forEach (.fixedYExtent = [58.9, 75.2])
+  out[1, 5].forEach (.fixedYExtent = [0.79, 3.8])
+  out[2, 6].forEach (.fixedYExtent = [1.23, 1.76])
+  out[3, 7].forEach (.fixedYExtent = [0.63, 1.14])
+  out
 
 ig.DataFormatter =
   rusko92: getRusko92!
   ceskoRusko92: getCeskoRusko92!
+  ceskoRusko04: getCeskoRusko04!

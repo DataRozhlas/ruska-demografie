@@ -14,3 +14,8 @@ if ig.containers['line-russia-czech']
   new ig.Lines do
     d3.select that
     ig.DataFormatter.ceskoRusko92
+
+if ig.containers['line-russia-czech-2']
+  new ig.Lines do
+    d3.select that
+    ig.DataFormatter.ceskoRusko04
