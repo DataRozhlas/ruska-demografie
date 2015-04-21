@@ -19,3 +19,8 @@ if ig.containers['line-russia-czech-2']
   new ig.Lines do
     d3.select that
     ig.DataFormatter.ceskoRusko04
+
+if ig.containers['line-external-deaths']
+  new ig.Lines do
+    d3.select that
+    ig.DataFormatter.externi

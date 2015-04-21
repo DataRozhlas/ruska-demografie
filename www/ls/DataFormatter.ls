@@ -22,6 +22,16 @@ getCeskoRuskoFields = ->
   prirustek:
     title: "Přírůstek obyvatel"
 
+getExternalFields = ->
+  "nasilna-smrt":
+    title: "Násilná smrt"
+  "valecna-smrt":
+    title: "Válečná smrt"
+  "sebevrazdy":
+    title: "Sebevraždy"
+  "dopravni-nehody":
+    title: "Dopravní nehody"
+
 getRusko92 = ->
   fields = getCeskoRuskoFields!
     ..doziti.fixedYExtent: [20, 65.73]
@@ -48,7 +58,24 @@ getCeskoRusko04 = ->
   out[3, 7].forEach (.fixedYExtent = [0.63, 1.14])
   out
 
+
+getExterni = ->
+  out = []
+  for country in <[rusko chorvatsko mexiko]>
+    fields = getExternalFields!
+    out ++= parseData "#{country}-externi", fields
+
+  out[0, 4, 8].forEach (.fixedYExtent = [0.04, 0.53])
+  out[1, 5, 9].forEach (.fixedYExtent = [0, 1.27])
+  out[2, 6, 10].forEach (.fixedYExtent = [0.07, 0.75])
+  out[3, 7, 11].forEach (.fixedYExtent = [0.22, 0.51])
+  out[0 to 3].forEach (.fixedXExtent = [1989 1996])
+  out[4 to 7].forEach (.fixedXExtent = [1989 1996])
+  out[8 to 11].forEach (.fixedXExtent = [2005 2012])
+  out
+
 ig.DataFormatter =
   rusko92: getRusko92!
   ceskoRusko92: getCeskoRusko92!
   ceskoRusko04: getCeskoRusko04!
+  externi: getExterni!

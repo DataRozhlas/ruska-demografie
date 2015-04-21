@@ -6,10 +6,17 @@ class ig.Lines
     padding = {top: 5 right: 7 bottom: 25 left: 47}
     innerWidth = width - padding.left - padding.right
     innerHeight = height - padding.top - padding.bottom
-    @xScale = d3.scale.linear!
+    xScale = d3.scale.linear!
       ..domain [minX, maxX]
       ..range [0, innerWidth]
-    barWidth = innerWidth / (maxX - minX)
+    @xScales = @data.map ->
+      if it.fixedXExtent
+        d3.scale.linear!
+          ..domain it.fixedXExtent
+          ..range [0, innerWidth]
+      else
+        xScale
+    barWidth = innerWidth / (@xScales[0].domain!.1 - @xScales[0].domain!.0)
     @data.forEach (line) ->
       extent = d3.extent line.data.map (.y)
       min = max = line.data.0
@@ -26,13 +33,12 @@ class ig.Lines
         extent = that
       else
         extent = line.yExtent.slice!
-        if extent.0 > 0 then extent.0 = 0
       y = d3.scale.linear!
         ..domain extent
         ..range [innerHeight, 0]
     paths = @data.map (line, i) ~>
       d3.svg.line!
-        ..x ~> @xScale it.x
+        ..x ~> @xScales[i] it.x
         ..y ~> @yScales[i] it.y
     @parentElement.selectAll \.line .data @data
       ..append \h2
@@ -56,7 +62,7 @@ class ig.Lines
           ..selectAll \circle.point .data (.data) .enter!append \circle
             ..attr \class \point
             ..classed \significant (d, i, ii) ~> d in @data[ii].significantYPoints
-            ..attr \cx ({x, y}, i) ~> @xScale x
+            ..attr \cx ({x, y}, i, ii) ~> @xScales[ii] x
             ..attr \cy ({x, y}, i, ii) ~> @yScales[ii] y
             ..attr \r 3
         ..append \g
@@ -68,20 +74,20 @@ class ig.Lines
             ..attr \x2 innerWidth
           ..append \line
             ..attr \class \extent
-            ..attr \x1 ~> @xScale it.data.0.x
-            ..attr \x2 ~> @xScale it.data[*-1].x
+            ..attr \x1 (d, i) ~> @xScales[i] d.data.0.x
+            ..attr \x2 (d, i) ~> @xScales[i] d.data[*-1].x
           ..selectAll \line.mark .data (.data) .enter!append \line
             ..attr \class \mark
             ..classed \significant (d, i, ii) ~> d in @data[ii].significantYPoints
-            ..attr \x1 ~> @xScale it.x
-            ..attr \x2 ~> @xScale it.x
+            ..attr \x1 (d, i, ii) ~> @xScales[ii] d.x
+            ..attr \x2 (d, i, ii) ~> @xScales[ii] d.x
             ..attr \y2 3
           ..selectAll \text.significant .data (.significantYPoints) .enter!append \text
             ..attr \class \significant
             ..attr \text-anchor \middle
             ..text -> it.x.toString!substr -2
             ..attr \y 15
-            ..attr \x ~> @xScale it.x
+            ..attr \x (d, i, ii) ~> @xScales[ii] d.x
           ..append \text
             ..attr \class \active-text
             ..attr \text-anchor \middle
@@ -119,9 +125,9 @@ class ig.Lines
         ..append \g
           ..attr \transform "translate(#{padding.left},#{padding.top})"
           ..attr \class \interaction
-          ..selectAll \rect .data ( -> [minX to maxX]) .enter!append \rect
+          ..selectAll \rect .data ((d, i) ~> [@xScales[i].domain!0 to @xScales[i].domain!1]) .enter!append \rect
             ..attr \width barWidth
-            ..attr \x ~> (@xScale it) - barWidth / 2
+            ..attr \x (d, i, ii) ~> (@xScales[ii] d) - barWidth / 2
             ..attr \height innerHeight + 30
             ..attr \y -5
             ..on \mouseover ~> @highlight it
@@ -143,7 +149,7 @@ class ig.Lines
     @activeLineHorizontal
       ..filter ((d, _, i) -> points[i])
         ..classed \active yes
-        ..attr \x2 (d, _, i) ~> @xScale points[i].x
+        ..attr \x2 (d, _, i) ~> @xScales[i] points[i].x
         ..attr \y1 (d, _, i) ~> @yScales[i] points[i].y
         ..attr \y2 (d, _, i) ~> @yScales[i] points[i].y
 
@@ -151,13 +157,13 @@ class ig.Lines
       ..filter ((d, _, i) -> points[i])
         ..classed \active yes
         ..attr \y1 (d, _, i) ~> @yScales[i] points[i].y
-        ..attr \x1 (d, _, i) ~> @xScale points[i].x
-        ..attr \x2 (d, _, i) ~> @xScale points[i].x
+        ..attr \x1 (d, _, i) ~> @xScales[i] points[i].x
+        ..attr \x2 (d, _, i) ~> @xScales[i] points[i].x
 
     @activeTextX
       ..filter ((d, _, i) -> points[i])
         ..classed \active yes
-        ..attr \x (d, _, i) ~> @xScale points[i].x
+        ..attr \x (d, _, i) ~> @xScales[i] points[i].x
         ..html (d, _, i) -> points[i].x.toString!substr -2
 
     @activeTextY
