@@ -220,9 +220,9 @@ inject-index = (cb) ->
   (err, [index, script, style]) <~ async.map files, fs.readFile
   console.log err if err
   index .= toString!
-  index .= replace '<script src="script.js" charset="utf-8" async></script>', "<script>#{script.toString!}</script>"
-  index .= replace '<link rel="stylesheet" href="screen.css">', "<style>#{style.toString!}</style>"
-  index += '<script src="https://samizdat.cz/tools/analytics/0.0.1.js" charset="utf-8" async></script>'
+  # index .= replace '<script src="script.js" charset="utf-8" async></script>', "<script>\n//<![CDATA[\n#{script.toString!}\n//]]>\n</script>"
+  # index .= replace '<link rel="stylesheet" href="screen.css">', "<style>#{style.toString!}</style>"
+  # index += '<script src="https://samizdat.cz/tools/analytics/0.0.1.js" charset="utf-8" async></script>'
   htmlminConfig =
     collapseWhitespace: 1
     removeAttributeQuotes: 1
@@ -230,7 +230,7 @@ inject-index = (cb) ->
     useShortDoctype: 1
     minifyJS: 1
     minifyCSS: 1
-  index = htmlmin.minify index, htmlminConfig
+  # index = htmlmin.minify index, htmlminConfig
   <~ fs.writeFile "#__dirname/www/index.deploy.html", index
   cb?!
 
@@ -287,7 +287,7 @@ switch task
   <~ build-styles compression: yes deploy: yes
   <~ build-all-scripts
   <~ combine-scripts compression: yes deploy: yes
-  # <~ inject-index!
+  <~ inject-index!
   <~ gzip-files!
   <~ deploy-files!
 
