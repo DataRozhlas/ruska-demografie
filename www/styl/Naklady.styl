@@ -6,6 +6,7 @@
     width 1000px
     svg
       position relative
+      left marginLeft
       z-index 2
       g.pole
         line
@@ -60,8 +61,8 @@
     .popisek
       position absolute
       z-index 1
-      left (227px * 3 + 15px * 6)
-      width 227px
+      left (227px * 3 + 15px * 6 + marginLeft)
+      width (227px - marginLeft)
       opacity 1
       transition opacity 0.1s
       &:before

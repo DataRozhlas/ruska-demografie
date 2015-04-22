@@ -71,7 +71,7 @@ class ig.Lines
           ..append \line
             ..attr \class \full-extent
             ..attr \x1 -10
-            ..attr \x2 innerWidth
+            ..attr \x2 innerWidth + padding.right
           ..append \line
             ..attr \class \extent
             ..attr \x1 (d, i) ~> @xScales[i] d.data.0.x

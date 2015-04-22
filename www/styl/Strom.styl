@@ -3,7 +3,7 @@
   width 100%
   .tree
     width 485px
-    margin-left 258px
+    margin-left (258px + marginLeft)
     position relative
     .line
       width 100%
@@ -37,9 +37,10 @@
       position absolute
       &.left
         left (-227px - 30px)
+        width 227px
       &.right
-        right (-227px - 30px)
-      width 227px
+        right (-227px - 30px + marginLeft)
+        width (227px - marginLeft)
       &:before
         content " "
         position absolute
