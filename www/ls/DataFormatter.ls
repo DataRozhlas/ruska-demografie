@@ -74,8 +74,20 @@ getExterni = ->
   out[8 to 11].forEach (.fixedXExtent = [2005 2012])
   out
 
+getNaklady = ->
+  countries = <[de cz ru in]>
+  lines = d3.tsv.parse ig.data.naklady, (row) ->
+    line =
+      type: row['expense-type']
+      data: for field in countries
+        parseFloat row[field]
+  {countries, lines}
+
+
+
 ig.DataFormatter =
   rusko92: getRusko92!
   ceskoRusko92: getCeskoRusko92!
   ceskoRusko04: getCeskoRusko04!
   externi: getExterni!
+  naklady: getNaklady!

@@ -22,6 +22,7 @@ externalData =
   "mexiko-externi": "#__dirname/data/mexiko-externi.tsv"
   "chorvatsko-externi": "#__dirname/data/chorvatsko-externi.tsv"
   "rusko-popstrom": "#__dirname/data/rusko-popstrom.tsv"
+  "naklady": "#__dirname/data/naklady.tsv"
 
 preferScripts = <[ postInit.js _loadData.js ../data.js init.js _loadExternal.js]>
 deferScripts = <[ geoUtils.js base.js ]>

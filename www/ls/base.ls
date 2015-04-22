@@ -28,3 +28,8 @@ if ig.containers['line-external-deaths']
 if ig.containers['strom']
   new ig.Strom do
     d3.select that
+
+if ig.containers['naklady']
+  new ig.Naklady do
+    d3.select that
+    ig.DataFormatter.naklady

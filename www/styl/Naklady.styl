@@ -1,0 +1,64 @@
+&.naklady
+  float left
+  width 100%
+  .graph
+    width 1000px
+    svg
+      g.pole
+        line
+          stroke #f0
+          stroke-width 4
+          shape-rendering crispEdges
+      g.line
+        transition opacity 0.1s
+        path
+          fill none
+          stroke-dasharray 4, 8
+          stroke-opacity 0.3
+        line
+          shape-rendering crispEdges
+        &:nth-child(1)
+          path, line
+            stroke #e41a1c
+          circle
+           fill #e41a1c
+        &:nth-child(2)
+          path, line
+            stroke #377eb8
+          circle
+           fill #377eb8
+        &:nth-child(3)
+          path, line
+            stroke #4daf4a
+          circle
+           fill #4daf4a
+        &:nth-child(4)
+          path, line
+            stroke #984ea3
+          circle
+           fill #984ea3
+        &:nth-child(5)
+          path, line
+            stroke #ff7f00
+          circle
+           fill #ff7f00
+        &:nth-child(6)
+          path, line
+            stroke #a65628
+          circle
+           fill #a65628
+      g.label
+        text
+          opacity 0
+          transition opacity 0.1s
+      g.voronoi
+        path
+          fill transparent
+    svg.active
+      g.line
+        opacity 0.1
+        &.active
+          opacity 1
+      g.label.active
+        text
+          opacity 1
