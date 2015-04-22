@@ -8,7 +8,7 @@ class ig.Naklady
     @graph = @parentElement.select \.graph
     {clientWidth:@width} = @graph.node!
     @height = 390
-    @padding = top: 30px right: 258px  bottom: 20px left: 258px
+    @padding = top: 30px right: 262px  bottom: 20px left: 262px
     @innerWidth  = @width - (@padding.left + @padding.right)
     @innerHeight = @height - (@padding.top + @padding.bottom)
     @drawLines!
@@ -70,7 +70,7 @@ class ig.Naklady
                   | "Restaurace a hotely"          => -8
                   | "Oblečení a obuv"              => 8
                   | otherwise                      => 4
-                  "translate(-15,#y)"
+                  "translate(-20,#y)"
               ..append \text
                 ..text -> "#{it.type}"
               ..append \line
