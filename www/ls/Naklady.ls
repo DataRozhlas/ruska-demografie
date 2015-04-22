@@ -88,6 +88,18 @@ class ig.Naklady
               ..attr \dx 7
     @lines = @svg.selectAll \g.line
     @labels = @svg.selectAll \g.label
+    @addPopisek do
+      @yScale 0.305
+      @yScale 0.285
+      "Rusové i Indové platí nejvíc za jídlo, téměř třetinu příjmů. To je dvakrát víc, než v Česku."
+    @addPopisek do
+      @yScale 0.145
+      @yScale 0.10
+      "Naopak mají poloviční náklady spojené s bydlením"
+    @addPopisek do
+      @yScale 0.02
+      @yScale 0.002
+      "A podstatně méne utrácí za rekreaci, kulturu a dovolené"
 
   drawVoronoiOverlay: ->
     points = []
@@ -111,13 +123,30 @@ class ig.Naklady
         ..on \mouseout ~> @downlightLines!
 
   highlightLine: (line) ->
-    @svg.classed \active yes
+    @graph.classed \active yes
     @lines.classed \active -> it is line
     @labels.classed \active -> it is line
     @texts
 
   downlightLines: ->
-    @svg.classed \active no
+    @graph.classed \active no
+
+  addPopisek: (y0, y1, text) ->
+    height = Math.max do
+      Math.abs y0 - y1
+      1
+    top = y0 + @padding.top
+
+    @graph.append \div
+      ..attr \class "popisek"
+      ..classed \single-line height == 1
+      ..style \top "#{top}px"
+      ..style \height "#{height}px"
+      ..append \div
+        ..style \top "#{height * 0.5}px"
+        ..attr \class \content
+        ..html text
+
 
 
 polygon = ->

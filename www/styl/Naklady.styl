@@ -4,6 +4,8 @@
   .graph
     width 1000px
     svg
+      position relative
+      z-index 2
       g.pole
         line
           stroke #f0
@@ -54,11 +56,35 @@
       g.voronoi
         path
           fill transparent
-    svg.active
-      g.line
-        opacity 0.1
-        &.active
-          opacity 1
-      g.label.active
-        text
-          opacity 1
+    .popisek
+      position absolute
+      z-index 1
+      left (227px * 3 + 15px * 6)
+      width 227px
+      opacity 1
+      transition opacity 0.1s
+      &:before
+        content " "
+        position absolute
+        top 0px
+        bottom 0px
+        width 4px
+        left 0px
+        border 1px dashed #a
+        border-left 0px none
+      &.single-line:before
+        border-bottom 0px none
+      .content
+        position absolute
+        padding-left 20px
+        transform translate(0, -50%)
+  .graph.active
+    g.line
+      opacity 0.1
+      &.active
+        opacity 1
+    g.label.active
+      text
+        opacity 1
+    div.popisek
+      opacity 0
