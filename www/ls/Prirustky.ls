@@ -99,6 +99,11 @@ class ig.Prirustky
   drawMap: (features) ->
     {geo} = ig.utils
     col = @parentElement.select "div.col:nth-child(2) div"
+    col
+      ..append \h2
+        ..html "Podíl neruské populace"
+      ..append \h3
+        ..html "Sytě jsou oblasti s více Nerusy"
     width = col.node!clientWidth
     {projection, width, height} = geo.getFittingProjection features, {width}
     @projection = projection
@@ -114,6 +119,7 @@ class ig.Prirustky
       ..range ['rgb(252,251,253)','rgb(239,237,245)','rgb(218,218,235)','rgb(188,189,220)','rgb(158,154,200)','rgb(128,125,186)','rgb(106,81,163)','rgb(84,39,143)','rgb(63,0,125)'].reverse!
 
     @svg1 = col.append \svg .attr {width, height}
+    @detail1 = col.append \p
     @svg1.append \g
       ..attr \class \highlight-circle
       ..append \circle
@@ -133,7 +139,13 @@ class ig.Prirustky
       ..range ['rgb(255,255,229)','rgb(247,252,185)','rgb(217,240,163)','rgb(173,221,142)','rgb(120,198,121)','rgb(65,171,93)','rgb(35,132,67)','rgb(0,104,55)','rgb(0,69,41)']
 
     col2 = @parentElement.select "div.col:nth-child(3) div"
+    col2
+      ..append \h2
+        ..html "Plodnost v oblasti"
+      ..append \h3
+        ..html "Sytě jsou oblasti s vyšší plodností"
     @svg2 = col2.append \svg .attr {width, height}
+    @detail2 = col2.append \p
     @svg2.append \g
       ..attr \class \highlight-circle
       ..append \circle
@@ -162,11 +174,16 @@ class ig.Prirustky
         ..classed \active yes
         ..attr \cx centroid[0]
         ..attr \cy centroid[1]
-
+    console.log selectedFeature
+    @detail1.html """#{selectedFeature.nazev}: <b>#{Math.round selectedFeature.rusu * 100}&nbsp;%</b> Rusů.
+    Nejvýznamnější menšina <b>#{selectedFeature.mensina} (#{Math.round selectedFeature.podilMensiny * 100}&nbsp;%)</b>"""
+    @detail2.html "Plodnost: <b>#{ig.utils.formatNumber selectedFeature.plodnost, 2}</b> dětí na jednu ženu"
 
   downlightState: ->
     @parentElement.classed \active no
     @highlightCircles.classed \active no
+    @detail1.html ''
+    @detail2.html ''
     if @activePoint
       @activePoint.remove!
       @activePoint = null
@@ -188,6 +205,8 @@ class ig.Prirustky
           ..plodnost = parseFloat line['plodnost']
           ..rusu = parseFloat line['rusu']
           ..nazev = line['region']
+          ..mensina = line['mensina']
+          ..podilMensiny = line['podil-mensiny']
 
     features
 
