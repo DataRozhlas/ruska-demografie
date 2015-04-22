@@ -30,4 +30,30 @@
       color #6
       font-size 14px
       font-variant small-caps
-      // text-transform uppercase
+    g.voronoi
+      path
+        fill transparent
+    g.highlight-circle
+      circle
+        visibility hidden
+        stroke-dasharray 3, 3
+        fill none
+        stroke #6
+        &.active
+          visibility visible
+  &.active
+    .point:not(.active)
+      fill lighten(#d73027, 95%)
+      fill-opacity 1
+    g.highlight:not(.active)
+      display none
+    .col:nth-child(2)
+      .feature:not(.active)
+        opacity 0.2
+        fill rgb(239,237,245)
+    .col:nth-child(3)
+      .feature:not(.active)
+        opacity 0.2
+        fill rgb(247,252,185)
+    .survival-line
+      opacity 0
