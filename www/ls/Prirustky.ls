@@ -100,9 +100,9 @@ class ig.Prirustky
     {geo} = ig.utils
     col = @parentElement.select "div.col:nth-child(2) div"
     col
-      ..append \h2
-        ..html "Podíl neruské populace"
       ..append \h3
+        ..html "Podíl neruské populace"
+      ..append \h4
         ..html "Sytě jsou oblasti s více Nerusy"
     width = col.node!clientWidth
     {projection, width, height} = geo.getFittingProjection features, {width}
@@ -140,9 +140,9 @@ class ig.Prirustky
 
     col2 = @parentElement.select "div.col:nth-child(3) div"
     col2
-      ..append \h2
-        ..html "Plodnost v oblasti"
       ..append \h3
+        ..html "Plodnost v oblasti"
+      ..append \h4
         ..html "Sytě jsou oblasti s vyšší plodností"
     @svg2 = col2.append \svg .attr {width, height}
     @detail2 = col2.append \p

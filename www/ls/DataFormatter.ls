@@ -15,22 +15,30 @@ parseData = (key, fields) ->
 getCeskoRuskoFields = ->
   doziti:
     title: "Věk dožití"
+    subtitle: "Pravděpodobný věk dožití"
   "externi-umrti":
     title: "Úmrtí na externí příčiny"
+    subtitle: "Počet úmrtí na 1000 obyvatel"
   plodnost:
     title: "Plodnost"
+    subtitle: "Počet dětí na jednu ženu"
   prirustek:
     title: "Přírůstek obyvatel"
+    subtitle: "Kolikrát více lidí se narodilo než umřelo"
 
 getExternalFields = ->
   "nasilna-smrt":
     title: "Násilná smrt"
+    subtitle: "Násilných smrtí na 1000 obyvatel"
   "valecna-smrt":
     title: "Válečná smrt"
+    subtitle: "Smrtí ve válce na 1000 obyvatel"
   "sebevrazdy":
     title: "Sebevraždy"
+    subtitle: "Sebevražd na 1000 obyvatel"
   "dopravni-nehody":
     title: "Dopravní nehody"
+    subtitle: "Úmrtí při DN na 1000 obyvatel"
 
 getRusko92 = ->
   fields = getCeskoRuskoFields!

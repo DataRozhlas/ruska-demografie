@@ -41,8 +41,10 @@ class ig.Lines
         ..x ~> @xScales[i] it.x
         ..y ~> @yScales[i] it.y
     @parentElement.selectAll \.line .data @data
-      ..append \h2
+      ..append \h3
         ..html (.title)
+      ..append \h4
+        ..html (.subtitle)
       ..append \svg
         ..attr {width, height}
         ..append \g
