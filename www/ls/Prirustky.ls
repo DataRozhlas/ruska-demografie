@@ -92,7 +92,13 @@ class ig.Prirustky
       ..append \line
         ..attr {x1, x2, y1, y2}
       ..append \text
-        ..text feature.nazev
+        ..text ->
+          o = feature.nazev
+          o += switch o.substr -1
+          | "á" => " oblast"
+          | "ý" => " kraj"
+          | _   => ""
+          o
         ..attr \text-anchor anchor
         ..attr \x x2 * 1.5
         ..attr \dy y2 * 1.5 + 3
