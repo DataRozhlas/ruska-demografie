@@ -8,7 +8,7 @@ class ig.Prirustky
 
   drawCorrelator: (features) ->
     ele = @parentElement.select "div.col:nth-child(4) div"
-    height = width = ele.node!clientWidth
+    height = width = @width = ele.node!clientWidth
     @svg3 = svg = ele.append \svg
       ..attr {width, height}
     padding = 10
@@ -77,8 +77,11 @@ class ig.Prirustky
 
   highlightPoint: (feature, isMousedOver) ->
     x = @x feature.rusu
-    dx = if x > 100 then -13 else 13
-    direction = (if dx > 0 then 1 else -1)
+    [direction, x1, x2, y1, y2, anchor] = switch
+      | x < @width / 3     => ["right"  5.5  13  0    0  "start" ]
+      | x > @width * 2 / 3 => ["left"  -5.5 -13  0    0  "end"   ]
+      | otherwise          => ["up"     0     0 -5.5 -12 "middle"]
+
     g = @correlatorLabelG.append \g
       ..attr \class "highlight"
       ..classed \active isMousedOver
@@ -87,13 +90,12 @@ class ig.Prirustky
         ..attr \class \highlight
         ..attr \r 5.5
       ..append \line
-        ..attr \x1 5.5 * direction
-        ..attr \x2 dx
+        ..attr {x1, x2, y1, y2}
       ..append \text
         ..text feature.nazev
-        ..attr \text-anchor if direction == -1 then \end else \start
-        ..attr \x dx + 5 * direction
-        ..attr \dy 3
+        ..attr \text-anchor anchor
+        ..attr \x x2 * 1.5
+        ..attr \dy y2 * 1.5 + 3
 
 
   drawMap: (features) ->
@@ -174,7 +176,6 @@ class ig.Prirustky
         ..classed \active yes
         ..attr \cx centroid[0]
         ..attr \cy centroid[1]
-    console.log selectedFeature
     @detail1.html """#{selectedFeature.nazev}: <b>#{Math.round selectedFeature.rusu * 100}&nbsp;%</b> Rusů.
     Nejvýznamnější menšina <b>#{selectedFeature.mensina} (#{Math.round selectedFeature.podilMensiny * 100}&nbsp;%)</b>"""
     @detail2.html "Plodnost: <b>#{ig.utils.formatNumber selectedFeature.plodnost, 2}</b> dětí na jednu ženu"
