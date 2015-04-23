@@ -1,3 +1,8 @@
+countryNames =
+  "cesko"      : "Česko"
+  "rusko"      : "Rusko"
+  "mexiko"     : "Mexiko"
+  "chorvatsko" : "Chorvatsko"
 class ig.Lines
   (@parentElement, @data) ->
     width = height = 227px
@@ -45,6 +50,8 @@ class ig.Lines
         ..html (.title)
       ..append \h4
         ..html (.subtitle)
+      ..append \h5
+        ..html -> countryNames[it.country]
       ..append \svg
         ..attr {width, height}
         ..append \g

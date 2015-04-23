@@ -1,4 +1,4 @@
-parseData = (key, fields) ->
+parseData = (key, fields, country) ->
   tsv = d3.tsv.parse ig.data[key], (row) ->
     for field, value of row
       row[field] = parseFloat value
@@ -8,8 +8,8 @@ parseData = (key, fields) ->
     field.data = tsv
       .map -> {x: it.rok, y: it[id]}
       .filter -> not isNaN it.y
-
     field.id = id
+    field.country = country if country
     field
 
 getCeskoRuskoFields = ->
@@ -40,15 +40,15 @@ getExternalFields = ->
     title: "Dopravní nehody"
     subtitle: "Úmrtí při DN na 1000 obyvatel"
 
-getRusko92 = ->
+getRusko92 = (country) ->
   fields = getCeskoRuskoFields!
     ..doziti.fixedYExtent: [20, 65.73]
-  parseData 'rusko-92', fields
+  parseData 'rusko-92', fields, country
 
 getCeskoRusko92 = ->
-  out = getRusko92!
+  out = getRusko92 "rusko"
   fields = getCeskoRuskoFields!
-  out ++= parseData "cesko-92", fields
+  out ++= parseData "cesko-92", fields, "cesko"
   out[0, 4].forEach (.fixedYExtent = [56, 69.5])
   out[1, 5].forEach (.fixedYExtent = [0.9, 3.36])
   out[2, 6].forEach (.fixedYExtent = [1.3, 2.23])
@@ -57,9 +57,9 @@ getCeskoRusko92 = ->
 
 getCeskoRusko04 = ->
   fieldsRusko = getCeskoRuskoFields!
-  out = parseData 'rusko-04', fieldsRusko
+  out = parseData 'rusko-04', fieldsRusko, "rusko"
   fieldsCesko = getCeskoRuskoFields!
-  out ++= parseData 'cesko-04', fieldsCesko
+  out ++= parseData 'cesko-04', fieldsCesko, "cesko"
   out[0, 4].forEach (.fixedYExtent = [58.9, 75.2])
   out[1, 5].forEach (.fixedYExtent = [0.79, 3.8])
   out[2, 6].forEach (.fixedYExtent = [1.23, 1.76])
@@ -71,7 +71,7 @@ getExterni = ->
   out = []
   for country in <[rusko chorvatsko mexiko]>
     fields = getExternalFields!
-    out ++= parseData "#{country}-externi", fields
+    out ++= parseData "#{country}-externi", fields, country
 
   out[0, 4, 8].forEach (.fixedYExtent = [0.04, 0.53])
   out[1, 5, 9].forEach (.fixedYExtent = [0, 1.27])
