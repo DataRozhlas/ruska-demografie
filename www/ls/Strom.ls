@@ -58,7 +58,7 @@ class ig.Strom
     year = @startYear - line.vek
     ratio = line.zeny / line.muzi
     suff = if 0.95 < ratio < 1.05
-      "<b>stejně</b> jako mužů"
+      "<b>podobně</b> jako mužů"
     else if ratio > 1
       "<b>#{ig.utils.formatNumber ratio, 1} × více</b> než mužů"
     else
