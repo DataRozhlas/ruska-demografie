@@ -38,9 +38,14 @@
       &.left
         left (-227px - 30px)
         width 227px
+        .content
+          text-align right
+          padding-right 20px
       &.right
         right (-227px - 30px + marginLeft)
         width (227px - marginLeft)
+        .content
+          padding-left 20px
       &:before
         content " "
         position absolute
@@ -58,6 +63,16 @@
       &.single-line:before
         border-bottom 0px none
       .content
+        width 100%
         position absolute
-        padding-left 20px
         transform translate(0, -50%)
+  &:hover
+    .line
+      opacity 0.2
+      &:hover
+        opacity 1
+    .popisek
+      opacity 0
+      &.active
+        opacity 1
+

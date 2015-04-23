@@ -16,6 +16,9 @@ class ig.Strom
       ..attr \class \tree
       ..selectAll \div.line .data data .enter!append \div
         ..attr \class "line"
+        ..on \mouseover @~highlightYear
+        ..on \touchstart @~highlightYear
+        ..on \mouseout @~downlightYear
         ..append \div
           ..attr \class "muzi bar"
           ..style \width -> "#{scale it.muzi}%"
@@ -51,7 +54,24 @@ class ig.Strom
       "Nenarozené děti 2. sv. války"
       "left"
 
-  addPopisek: (fromYear, toYear, text, align="left") ->
+  highlightYear: (line) ->
+    year = @startYear - line.vek
+    ratio = line.zeny / line.muzi
+    suff = if 0.95 < ratio < 1.05
+      "<b>stejně</b> jako mužů"
+    else if ratio > 1
+      "<b>#{ig.utils.formatNumber ratio, 1} × více</b> než mužů"
+    else
+      "<b>#{ig.utils.formatNumber (1 / ratio), 1} × méně</b> než mužů"
+    @popisek1 = @addPopisek year, year, "Ročník #{year}: <b>#{ig.utils.formatNumber line.muzi}</b> mužů", "left", yes
+    @popisek2 = @addPopisek year, year, "<b>#{ig.utils.formatNumber line.zeny}</b> žen<br>(#suff)", "right", yes
+
+  downlightYear: ->
+    @popisek1.remove!
+    @popisek2.remove!
+
+
+  addPopisek: (fromYear, toYear, text, align="left", active=no) ->
     height = Math.max do
       Math.abs (fromYear - toYear) * @lineHeight
       1
@@ -60,6 +80,7 @@ class ig.Strom
     @element.append \div
       ..attr \class "popisek #align"
       ..classed \single-line height == 1
+      ..classed \active active
       ..style \top "#{top}px"
       ..style \height "#{height}px"
       ..append \div
