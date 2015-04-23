@@ -4,7 +4,7 @@ ig.fit = ->
   return unless $?
   $hero = $ "<div class='hero'></div>"
     ..append "<div class='overlay'></div>"
-    ..append "<span class='copy'>Fotografie &copy; Magistrát města Karlovy Vary</span>"
+    ..append "<span class='copy'>Fotografie CC BY <a href='https://www.flickr.com/photos/dmitry_kolesnikov/6842797721' target='_blank'>Dmitry Kolesnikov</a>, Flickr</span>"
     ..append "<a href='#' class='scroll-btn'>Continue reading</a>"
     ..find 'a.scroll-btn' .bind 'click touchstart' (evt) ->
       evt.preventDefault!
