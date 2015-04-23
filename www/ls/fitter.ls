@@ -21,8 +21,9 @@ ig.fit = ->
   $ "p.perex" .after $filling
 
   $shares = $ "<div class='shares'>
-    <a class='share fb' target='_blank' href='https://www.facebook.com/sharer/sharer.php?u=#shareUrl'><img src='https://samizdat.cz/tools/icons/facebook-bg-white.svg'></a>
-    <a class='share tw' target='_blank' href='https://twitter.com/home?status=#shareUrl'><img src='https://samizdat.cz/tools/icons/twitter-bg-white.svg'></a>
+    <a class='share cro' title='Zpět nahoru' href='#'><img src='https://samizdat.cz/tools/cro-logo/cro-logo-light.svg'></a>
+    <a class='share fb' title='Sdílet na Facebooku' target='_blank' href='https://www.facebook.com/sharer/sharer.php?u=#shareUrl'><img src='https://samizdat.cz/tools/icons/facebook-bg-white.svg'></a>
+    <a class='share tw' title='Sdílet na Twitteru' target='_blank' href='https://twitter.com/home?status=#shareUrl'><img src='https://samizdat.cz/tools/icons/twitter-bg-white.svg'></a>
   </div>"
   $hero.append $shares
   sharesTop = $shares.offset!top
@@ -43,11 +44,16 @@ ig.fit = ->
     else if top < sharesTop and sharesFixed
       sharesFixed := no
       $shares.removeClass \fixed
-  $shares.find \a .bind \click ->
+  $shares.find "a[target='_blank']" .bind \click ->
     window.open do
       @getAttribute \href
       ''
       "width=550,height=265"
+  $shares.find "a.cro" .bind \click (evt) ->
+    evt.preventDefault!
+    d3.transition!
+      .duration 800
+      .tween "scroll" scrollTween 0
   <~ $
   $ '#aside' .remove!
 

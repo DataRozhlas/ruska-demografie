@@ -74,7 +74,6 @@ class ig.Prirustky
         ..on \mouseout ~> @downlightState!
 
 
-
   highlightPoint: (feature, isMousedOver) ->
     x = @x feature.rusu
     [direction, x1, x2, y1, y2, anchor] = switch
