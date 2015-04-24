@@ -169,6 +169,7 @@ class ig.Prirustky
 
 
   highlightState: (selectedFeature) ->
+    @downlightState!
     @parentElement.classed \active yes
     @featureElements
       .classed \active -> it is selectedFeature

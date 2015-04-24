@@ -55,6 +55,7 @@ class ig.Strom
       "left"
 
   highlightYear: (line) ->
+    @downlightYear!
     year = @startYear - line.vek
     ratio = line.zeny / line.muzi
     suff = if 0.95 < ratio < 1.05
@@ -67,8 +68,12 @@ class ig.Strom
     @popisek2 = @addPopisek year, year, "<b>#{ig.utils.formatNumber line.zeny}</b> žen<br>(#suff)", "right", yes
 
   downlightYear: ->
-    @popisek1.remove!
-    @popisek2.remove!
+    if @popisek1
+      @popisek1.remove!
+      @popisek1 = null
+    if @popisek2
+      @popisek2.remove!
+      @popisek2 = null
 
 
   addPopisek: (fromYear, toYear, text, align="left", active=no) ->
