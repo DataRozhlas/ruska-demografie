@@ -12,33 +12,33 @@
       font-size 12px
       margin-top 9px
       margin-bottom 3px
-      color darken(RussianBlue, 20%)
+      color darken(RussianRed, 20%)
     svg
       path
         fill none
-        stroke RussianBlue
+        stroke RussianRed
         stroke-width 1.5px
       circle
-        stroke RussianBlue
+        stroke RussianRed
         fill white
         stroke-width 1px
         &.significant
         &.active
-          fill RussianBlue
+          fill RussianRed
       g.axis
         line.full-extent
           stroke #d3
           shape-rendering crispEdges
         line.extent
         line.mark
-          stroke lighten(desaturate(RussianBlue, 40%), 40%)
+          stroke lighten(desaturate(RussianRed, 40%), 40%)
           shape-rendering crispEdges
           &.significant
-            stroke RussianBlue
+            stroke RussianRed
             stroke-width 2
         text
           font-size 11px
-          fill darken(RussianBlue, 50%)
+          fill darken(RussianRed, 50%)
   .col.no-heading
     h3
     h4
@@ -47,28 +47,28 @@
       margin-top 20px
   g.active-lines line.active
     shape-rendering crispEdges
-    stroke lighten(desaturate(RussianBlue, 40%), 40%)
+    stroke lighten(desaturate(RussianRed, 40%), 40%)
   .col.other-color
     h5
-      color darken(RussianRed, 20%)
+      color darken(RussianBlue, 20%)
     svg
       circle
-        stroke RussianRed
+        stroke RussianBlue
         &.significant
         &.active
-          fill RussianRed
+          fill RussianBlue
       path
-        stroke RussianRed
+        stroke RussianBlue
       g.axis
         line.extent
         line.mark
-          stroke lighten(desaturate(RussianRed, 40%), 30%)
+          stroke lighten(desaturate(RussianBlue, 40%), 30%)
           &.significant
-            stroke RussianRed
+            stroke RussianBlue
         text
-          fill darken(RussianRed, 50%)
+          fill darken(RussianBlue, 50%)
       g.active-lines line.active
-        stroke lighten(desaturate(RussianRed, 40%), 30%)
+        stroke lighten(desaturate(RussianBlue, 40%), 30%)
   g.interaction rect
     fill transparent
   svg
