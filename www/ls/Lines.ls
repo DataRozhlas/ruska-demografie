@@ -173,13 +173,13 @@ class ig.Lines
       ..filter ((d, _, i) -> points[i])
         ..classed \active yes
         ..attr \x (d, _, i) ~> @xScales[i] points[i].x
-        ..html (d, _, i) -> points[i].x.toString!substr -2
+        ..text (d, _, i) -> points[i].x.toString!substr -2
 
     @activeTextY
       ..filter ((d, _, i) -> points[i])
         ..classed \active yes
         ..attr \y (d, _, i) ~> @yScales[i] points[i].y
-        ..html (d, _, i) ~> @createText points[i], @data[i]
+        ..text (d, _, i) ~> @createText points[i], @data[i]
 
   downlight: ->
     @parentElement

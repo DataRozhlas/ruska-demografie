@@ -36,7 +36,7 @@ class ig.Naklady
           ..append \text
             ..attr \text-anchor \middle
             ..attr \dy -14
-            ..html -> countryNames[it]
+            ..text -> countryNames[it]
         ..append \g
           ..selectAll \g.line .data @data.lines .enter!append \g
             ..attr \class \line
