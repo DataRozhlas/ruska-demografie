@@ -1,17 +1,21 @@
 &.prirustky
-  height 280px
+  position relative
+  margin-top 20px
+  height 470px
   .col
     h4
       margin-bottom 4px
       font-weight normal
+      white-space normal
     p
       font-size 12px
   .col:nth-child(2)
-  .col:nth-child(3)
-  .col:nth-child(4)
     > div
-      width ((1000px - 90px) / 4 - (marginLeft / 3))
-      padding-left marginLeft
+      width 485px
+      margin-left marginLeft
+
+  .col:nth-child(4) > div
+    width 189px
 
   svg
     circle.point
@@ -56,10 +60,29 @@
     .col:nth-child(2)
       .feature:not(.active)
         opacity 0.2
-        fill rgb(239,237,245)
-    .col:nth-child(3)
-      .feature:not(.active)
-        opacity 0.2
         fill rgb(247,252,185)
+    .col:nth-child(4)
+      svg
+        .feature:not(.active)
+          opacity 0.2
+          fill rgb(239,237,245)
     .survival-line
       opacity 0
+  .col:nth-child(3)
+    display none
+  .col:nth-child(2)
+    svg
+      margin-top 28px
+      transform scale(2.56)
+      transform-origin 0 0
+      display block
+      g.highlight-circle
+        circle
+          stroke-width 0.5
+          stroke-dasharray 1.5, 1.5
+    p
+      position absolute
+      top 408px
+  .col:nth-child(4)
+    svg + h3
+      margin-top 20px
