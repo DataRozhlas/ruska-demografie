@@ -1,9 +1,11 @@
 Zhroucení sovětského svazu (Rusko × ČR)
 o očekávaná délka života (1984-1994) 
 o porodnost (1984-1994)
-o hlavní příčiny úmrtí, muži (1992)
+o externí příčiny úmrtí, muži (1992)
 o přirozený přírůstek (1984-1994)
-o imigrace, emigrace (1984-1994)
+
+
+
 o poměr muži × ženy podle věku (možná demografický strom)
 
 Vysoká úmrtnost hlavně mužů na vnější příčiny, střední věk dožití u mužů extrémně nízký, nižší než v 80s, skokový propad o sedm let; alkohol, drogy, kriminalita, nemoci srdce, beznaděj: http://www.nybooks.com/blogs/nyrblog/2014/sep/02/dying-russians/
@@ -25,6 +27,8 @@ o hlavní příčiny úmrtí, muži (1989-96 Rusko, 1990-93 Chorvatsko, 2005-201
 Struktura spotřeby v Rusku: rozvojová země?
 
 o struktura spotřeby (Rusko × ?)
+https://mail-attachment.googleusercontent.com/attachment/u/0/?ui=2&ik=ffbce40671&view=att&th=14cbceb8437dd704&attid=0.1&disp=inline&safe=1&zw&sadat=ANGjdJ9eEsF0wwESGMlXbC1Scpz2t43orGoaSKTnki0MsDbwe8un0qSS_xIgCLE&sadnir=3&sadat=ANGjdJ9tViJOsfj1qQDI2BCYT1QwE0tHa4SMCAbk-eE8FTTeYgbhLH-VHeI0YEc&sadat=ANGjdJ_xD2pgPaGc_p944ZsvYfhYPM7LnMHhW2uvyMz9cP_4UcnzLjnezEi9kL0&saduie=AG9B_P-REUAmYPyvOd1I8IRHGsbo&sadet=1429529540981&sadat=ANGjdJ9Xqj9Ov4xpGyp2qDBaHhL-Easgw75oqEVWrKq9zTeT0YlaEHrj-Z64o6I&sads=HT2JuK-mw6X-INJY2KcaCuqlrZE
+http://www.econ.yale.edu/growth_pdf/cdp896.pdf
 
 ---
 
@@ -42,11 +46,11 @@ láska k Putinovi: udělal z nich consumers, zvyšovala se životní úroveň; s
 
 ---
 
-Komplikace: národnostní složení
+Komplikace: národnostní složení a imigrace
 o mapa národnostního složení Ruska
-- národnostní složení Ruska 1992 a 2013: https://translate.googleusercontent.com/translate_c?depth=1&hl=cs&ie=UTF8&prev=_t&rurl=translate.google.com&sl=ru&tl=en&u=http://www.gks.ru/free_doc/new_site/perepis2010/croc/Documents/Vol4/pub-04-01.xlsx&usg=ALkJrhgYsa7mi2bF2hcgj3r1oHxtMJjomA
-- demografická prognóza do 2050
-- přirozený přírůstek podle oblasti
+o přirozený přírůstek podle oblasti
+- národnostní složení Ruska 2013
+o demografická prognóza do 2050: http://www.un.org/esa/population/publications/wpp2008/wpp2008_highlights.pdf
 
 Kavkazské menšiny mají jinou demografii -> muslimové
 po rozpadu SSSR měli RUsové 85 procent; očima Evropana je dominantně RUská (pravoslavná); prognóza, do 2050 půl na půl
@@ -54,6 +58,12 @@ muslimové - kavkaz, povolží (tatarstát, baškortostán); už v 90s šla nata
 stáhli Rusy z okolí, chtěli je dostat na dálný východ a na sibiř, ale to nikdo nechce; chtěli moskvu a Petrohrad, ale to nejde; 
 ruský nacionalismus je nejen ruský, ale i církevní a národní; průměrnej rus se muslimů. hlavně z kavkazu bojí; 
 Hodně národností, reálné riziko Kavkazu a potenciální riziko muslimů: 80 % Rusové, 4 % Tataři, atd. Neruské menšiny mají často jiný demografický vývoj než Rusové, je mezi nimi hodně muslimů, což může do budoucna znamenat komplikace, zvlášť při rostoucím ruském nacionalismu.
+
+http://aa.ecn.cz/img_upload/f76c21488a048c95bc0a5f12deece153/Russia_faces.pdf
+http://www.ceskatelevize.cz/ct24/ekonomika/153629-do-ruska-miri-miliony-imigrantu-hledajicich-praci/
+http://www.tyden.cz/rubriky/zahranici/rusko-a-okoli/putin-ma-problem-rusko-hloupne-a-celi-prilivu-imigrantu_327396.html#.VTT5KyHtmko
+http://lukastomasek.blog.idnes.cz/c/456725/komplex-jmenem-rusko.html
+http://zpravy.e15.cz/zahranicni/politika/kampan-pred-moskevskymi-volbami-ovladlo-tema-imigrace-1015759
 
 ---
 
