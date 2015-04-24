@@ -6,7 +6,7 @@ ig.fit = ->
   $hero = $ "<div class='hero'></div>"
     ..append "<div class='overlay'></div>"
     ..append "<span class='copy'>Fotografie CC BY <a href='https://www.flickr.com/photos/dmitry_kolesnikov/6842797721' target='_blank'>Dmitry Kolesnikov</a>, Flickr</span>"
-    ..append "<a href='#' class='scroll-btn'>Continue reading</a>"
+    ..append "<a href='#' class='scroll-btn'>Číst dál</a>"
     ..find 'a.scroll-btn' .bind 'click touchstart' (evt) ->
       evt.preventDefault!
       offset = $filling.offset!top + $filling.height! - 50
@@ -15,7 +15,7 @@ ig.fit = ->
         .tween "scroll" scrollTween offset
   $body.prepend $hero
 
-  $ '#article h1' .html 'The Greenest Czech Towns<br>As Seen from Space:<br>Karlovy Vary, Prague, Ostrava&hellip;'
+  $ '#article h1' .html 'Rusové proti Rusům:<br>Země v nevyhlášené<br>občanské válce'
 
   $filling = $ "<div class='ig filling'></div>"
     ..css \height $hero.height! + 50
