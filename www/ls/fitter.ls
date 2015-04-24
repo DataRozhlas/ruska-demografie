@@ -2,6 +2,7 @@ shareUrl = window.location
 
 ig.fit = ->
   return unless $?
+  $body = $ 'body'
   $hero = $ "<div class='hero'></div>"
     ..append "<div class='overlay'></div>"
     ..append "<span class='copy'>Fotografie CC BY <a href='https://www.flickr.com/photos/dmitry_kolesnikov/6842797721' target='_blank'>Dmitry Kolesnikov</a>, Flickr</span>"
@@ -12,7 +13,7 @@ ig.fit = ->
       d3.transition!
         .duration 800
         .tween "scroll" scrollTween offset
-  $ 'body' .prepend $hero
+  $body.prepend $hero
 
   $ '#article h1' .html 'The Greenest Czech Towns<br>As Seen from Space:<br>Karlovy Vary, Prague, Ostrava&hellip;'
 
@@ -25,7 +26,7 @@ ig.fit = ->
     <a class='share fb' title='Sdílet na Facebooku' target='_blank' href='https://www.facebook.com/sharer/sharer.php?u=#shareUrl'><img src='https://samizdat.cz/tools/icons/facebook-bg-white.svg'></a>
     <a class='share tw' title='Sdílet na Twitteru' target='_blank' href='https://twitter.com/home?status=#shareUrl'><img src='https://samizdat.cz/tools/icons/twitter-bg-white.svg'></a>
   </div>"
-  $hero.append $shares
+  $body.prepend $shares
   sharesTop = $shares.offset!top
   sharesFixed = no
 
