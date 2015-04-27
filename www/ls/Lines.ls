@@ -5,7 +5,8 @@ countryNames =
   "chorvatsko" : "Chorvatsko"
 class ig.Lines
   (@parentElement, @data) ->
-    width = height = 227px
+    width = 227px
+    height = 140px
     minX = d3.min @data.map -> d3.min it.data.map (.x)
     maxX = d3.max @data.map -> d3.max it.data.map (.x)
     padding = {top: 5 right: 7 bottom: 25 left: 47}
@@ -173,13 +174,13 @@ class ig.Lines
       ..filter ((d, _, i) -> points[i])
         ..classed \active yes
         ..attr \x (d, _, i) ~> @xScales[i] points[i].x
-        ..html (d, _, i) -> points[i].x.toString!substr -2
+        ..text (d, _, i) -> points[i].x.toString!substr -2
 
     @activeTextY
       ..filter ((d, _, i) -> points[i])
         ..classed \active yes
         ..attr \y (d, _, i) ~> @yScales[i] points[i].y
-        ..html (d, _, i) ~> @createText points[i], @data[i]
+        ..text (d, _, i) ~> @createText points[i], @data[i]
 
   downlight: ->
     @parentElement

@@ -15,13 +15,13 @@ parseData = (key, fields, country) ->
 getCeskoRuskoFields = ->
   doziti:
     title: "Věk dožití"
-    subtitle: "Pravděpodobný věk dožití"
+    subtitle: "Očekávaný věk dožití při narození"
   "externi-umrti":
     title: "Úmrtí na externí příčiny"
     subtitle: "Počet úmrtí na 1000 obyvatel"
   plodnost:
     title: "Plodnost"
-    subtitle: "Počet dětí na jednu ženu"
+    subtitle: "Počet dětí na jednu ženu v produkt. věku"
   prirustek:
     title: "Přírůstek obyvatel"
     subtitle: "Kolikrát více lidí se narodilo než umřelo"
@@ -29,10 +29,10 @@ getCeskoRuskoFields = ->
 getExternalFields = ->
   "nasilna-smrt":
     title: "Násilná smrt"
-    subtitle: "Násilných smrtí na 1000 obyvatel"
+    subtitle: "Násilná smrt cizí rukou na 1000 obyvatel"
   "valecna-smrt":
     title: "Válečná smrt"
-    subtitle: "Smrtí ve válce na 1000 obyvatel"
+    subtitle: "Zabitých ve válce na 1000 obyvatel"
   "sebevrazdy":
     title: "Sebevraždy"
     subtitle: "Sebevražd na 1000 obyvatel"
@@ -83,7 +83,7 @@ getExterni = ->
   out
 
 getNaklady = ->
-  countries = <[de cz ru in]>
+  countries = <[in ru cz de]>
   lines = d3.tsv.parse ig.data.naklady, (row) ->
     line =
       type: row['expense-type']

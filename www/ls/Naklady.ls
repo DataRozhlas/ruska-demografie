@@ -36,7 +36,7 @@ class ig.Naklady
           ..append \text
             ..attr \text-anchor \middle
             ..attr \dy -14
-            ..html -> countryNames[it]
+            ..text -> countryNames[it]
         ..append \g
           ..selectAll \g.line .data @data.lines .enter!append \g
             ..attr \class \line
@@ -63,20 +63,21 @@ class ig.Naklady
             ..append \g
               ..attr \class \label-start
               ..attr \transform ->
-                  y = yScale it.data[0]
+                  y = yScale it.data[3]
                   y += switch it.type
                   | "Jídlo a nealkoholické nápoje" => -6
                   | "Rekreace a kultura"           => 8
-                  | "Restaurace a hotely"          => -8
-                  | "Oblečení a obuv"              => 8
+                  | "Restaurace a hotely"          => -11
+                  | "Oblečení a obuv"              => 5
+                  | "Nákupy automobilů"            => 18
                   | otherwise                      => 4
-                  "translate(-20,#y)"
+                  "translate(500,#y)"
               ..append \text
                 ..text -> "#{it.type}"
               ..append \line
                 ..attr {x2: 0 y1: 4, y2: 4}
-                ..attr \x1 -> -1 * @parentNode.querySelector 'text' .getBBox!width
-              ..attr \text-anchor \end
+                ..attr \x1 -> @parentNode.querySelector 'text' .getBBox!width
+              ..attr \text-anchor \start
           ..selectAll \g.label .data @data.lines .enter!append \g
             ..attr \class \label
             ..selectAll \text.point .data (.data) .enter!append \text
@@ -85,21 +86,22 @@ class ig.Naklady
               ..attr \y yScale
               ..text -> "#{ig.utils.formatNumber it * 100, 2} %"
               ..attr \dy 15
-              ..attr \dx 7
+              ..attr \text-anchor \end
+              ..attr \dx -9
     @lines = @svg.selectAll \g.line
     @labels = @svg.selectAll \g.label
     @addPopisek do
       @yScale 0.305
       @yScale 0.285
-      "Rusové i Indové platí nejvíc za jídlo, téměř třetinu příjmů. To je dvakrát víc, než v Česku."
+      "Rusové i Indové platí nejvíc za jídlo, téměř třetinu příjmů.<br>To je charakteristické pro rozvojové ekonomiky."
     @addPopisek do
       @yScale 0.145
       @yScale 0.10
-      "Naopak mají poloviční náklady spojené s bydlením"
+      "Naopak mají poloviční náklady spojené s bydlením. V Rusku cenu snižují státní dotace na energie"
     @addPopisek do
-      @yScale 0.02
-      @yScale 0.002
-      "A podstatně méne utrácí za rekreaci, kulturu a dovolené"
+      @yScale 0.08
+      @yScale 0.03
+      "Rusové hodně utrácejí za alkohol, oblečení a nová auta"
 
   drawVoronoiOverlay: ->
     points = []

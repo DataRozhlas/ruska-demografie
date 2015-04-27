@@ -1,6 +1,8 @@
 &.naklady
   float left
   width 100%
+  margin-top 30px
+  margin-bottom 48px
   position relative
   .graph
     width 1000px
@@ -54,6 +56,11 @@
             stroke #a65628
           circle
            fill #a65628
+        &:nth-child(7)
+          path, line
+            stroke #f781bf
+          circle
+           fill #f781bf
       g.label
         text
           opacity 0
@@ -64,25 +71,26 @@
     .popisek
       position absolute
       z-index 1
-      left (227px * 3 + 15px * 6 + marginLeft)
+      right (227px * 3 + 15px * 6 - 30px)
       margin-top -8px
-      width (227px - marginLeft)
+      width (227px + 30px)
       opacity 1
       transition opacity 0.1s
+      text-align right
       &:before
         content " "
         position absolute
         top 0px
         bottom 0px
         width 4px
-        left 0px
+        right 0px
         border 1px dashed #a
-        border-left 0px none
+        border-right 0px none
       &.single-line:before
         border-bottom 0px none
       .content
         position absolute
-        padding-left 20px
+        padding-right 20px
         transform translate(0, -50%)
   .graph.active
     g.line

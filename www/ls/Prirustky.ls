@@ -9,6 +9,8 @@ class ig.Prirustky
   drawCorrelator: (features) ->
     ele = @parentElement.select "div.col:nth-child(4) div"
     height = width = @width = ele.node!clientWidth
+    ele.append \h3 .html "Plodnost a etnicita"
+    ele.append \h4 .html "Nejvíce roste Ingušsko a Čečna,<br>v obou žije méně než 2 % Rusů"
     @svg3 = svg = ele.append \svg
       ..attr {width, height}
     padding = 10
@@ -105,7 +107,8 @@ class ig.Prirustky
 
   drawMap: (features) ->
     {geo} = ig.utils
-    col = @parentElement.select "div.col:nth-child(2) div"
+    col = @parentElement.select "div.col:nth-child(4) div"
+    col2 = @parentElement.select "div.col:nth-child(2) div"
     col
       ..append \h3
         ..html "Podíl neruské populace"
@@ -126,7 +129,7 @@ class ig.Prirustky
       ..range ['rgb(252,251,253)','rgb(239,237,245)','rgb(218,218,235)','rgb(188,189,220)','rgb(158,154,200)','rgb(128,125,186)','rgb(106,81,163)','rgb(84,39,143)','rgb(63,0,125)'].reverse!
 
     @svg1 = col.append \svg .attr {width, height}
-    @detail1 = col.append \p
+
     @svg1.append \g
       ..attr \class \highlight-circle
       ..append \circle
@@ -145,18 +148,17 @@ class ig.Prirustky
         9
       ..range ['rgb(255,255,229)','rgb(247,252,185)','rgb(217,240,163)','rgb(173,221,142)','rgb(120,198,121)','rgb(65,171,93)','rgb(35,132,67)','rgb(0,104,55)','rgb(0,69,41)']
 
-    col2 = @parentElement.select "div.col:nth-child(3) div"
     col2
       ..append \h3
-        ..html "Plodnost v oblasti"
+        ..html "Rusko roste tam, kde nežijí Rusové"
       ..append \h4
-        ..html "Sytě jsou oblasti s vyšší plodností"
+        ..html "Čím sytější barva, tím vyšší je v oblasti plodnost"
     @svg2 = col2.append \svg .attr {width, height}
     @detail2 = col2.append \p
     @svg2.append \g
       ..attr \class \highlight-circle
       ..append \circle
-        ..attr \r 17
+        ..attr \r 10
     @svg2.append \g
       ..selectAll \path .data features .enter!append \path
         ..attr \class \feature
@@ -169,6 +171,7 @@ class ig.Prirustky
 
 
   highlightState: (selectedFeature) ->
+    @downlightState!
     @parentElement.classed \active yes
     @featureElements
       .classed \active -> it is selectedFeature
@@ -178,17 +181,24 @@ class ig.Prirustky
     if selectedFeature.area < 0.004
       centroid = @projection selectedFeature.centroid
       @highlightCircles
-        ..classed \active yes
+        ..classed \active (d, i) ->
+            if i == 0
+              selectedFeature.area < 0.002
+            else
+              yes
         ..attr \cx centroid[0]
         ..attr \cy centroid[1]
-    @detail1.html """#{selectedFeature.nazev}: <b>#{Math.round selectedFeature.rusu * 100}&nbsp;%</b> Rusů.
-    Nejvýznamnější menšina <b>#{selectedFeature.mensina} (#{Math.round selectedFeature.podilMensiny * 100}&nbsp;%)</b>"""
-    @detail2.html "Plodnost: <b>#{ig.utils.formatNumber selectedFeature.plodnost, 2}</b> dětí na jednu ženu"
+    nazev = selectedFeature.nazev
+    nazev += switch nazev.substr -1
+    | "á" => " oblast"
+    | "ý" => " kraj"
+    | _   => ""
+    @detail2.html "#{nazev}: <b>#{ig.utils.formatNumber selectedFeature.plodnost, 2}</b> dětí na jednu ženu<br>
+    V populaci je <b>#{Math.round selectedFeature.rusu * 100}&nbsp;% Rusů</b>, nejvýznamnější menšina jsou <b>#{selectedFeature.mensina} (#{Math.round selectedFeature.podilMensiny * 100}&nbsp;%)</b>."
 
   downlightState: ->
     @parentElement.classed \active no
     @highlightCircles.classed \active no
-    @detail1.html ''
     @detail2.html ''
     if @activePoint
       @activePoint.remove!
