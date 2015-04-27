@@ -29,6 +29,16 @@ class ig.Strom
           ..attr \class "muzi oppbar"
           ..style \left -> "#{50 + scale it.muzi}%"
     @addPopisek do
+      2010
+      2010
+      "Nejmladší děti – ročník 2010"
+      "left"
+    @addPopisek do
+      1910
+      1910
+      "Nejstarší lidé – ročník 1910"
+      "left"
+    @addPopisek do
       1980
       1980
       "Kolem 30 let věku začnou převažovat ženy"
