@@ -67,8 +67,9 @@ class ig.Naklady
                   y += switch it.type
                   | "Jídlo a nealkoholické nápoje" => -6
                   | "Rekreace a kultura"           => 8
-                  | "Restaurace a hotely"          => -8
-                  | "Oblečení a obuv"              => 8
+                  | "Restaurace a hotely"          => -11
+                  | "Oblečení a obuv"              => 5
+                  | "Nákupy automobilů"            => 18
                   | otherwise                      => 4
                   "translate(-20,#y)"
               ..append \text
