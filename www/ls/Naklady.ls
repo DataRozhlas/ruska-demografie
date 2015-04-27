@@ -91,15 +91,15 @@ class ig.Naklady
     @addPopisek do
       @yScale 0.305
       @yScale 0.285
-      "Rusové i Indové platí nejvíc za jídlo, téměř třetinu příjmů. To je dvakrát víc, než v Česku."
+      "Rusové i Indové platí nejvíc za jídlo, téměř třetinu příjmů. To je charakteristické pro rozvojové ekonomiky."
     @addPopisek do
       @yScale 0.145
       @yScale 0.10
-      "Naopak mají poloviční náklady spojené s bydlením"
+      "Naopak mají poloviční náklady spojené s bydlením. V Rusku cenu snižují státní dotace na energie"
     @addPopisek do
+      @yScale 0.07
       @yScale 0.02
-      @yScale 0.002
-      "A podstatně méne utrácí za rekreaci, kulturu a dovolené"
+      "Rusové hodně utrácejí za alkohol, oblečení a nová auta"
 
   drawVoronoiOverlay: ->
     points = []
