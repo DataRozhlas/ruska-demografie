@@ -28,6 +28,8 @@ class ig.Strom
         ..append \div
           ..attr \class "muzi oppbar"
           ..style \left -> "#{50 + scale it.muzi}%"
+    @popisky = @element.append \div
+      ..attr \class \popisky
     @addPopisek do
       2010
       2010
@@ -92,7 +94,7 @@ class ig.Strom
       1
     top = (@startYear - fromYear) * @lineHeight
 
-    @element.append \div
+    @popisky.append \div
       ..attr \class "popisek #align"
       ..classed \single-line height == 1
       ..classed \active active
