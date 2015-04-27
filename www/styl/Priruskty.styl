@@ -54,21 +54,21 @@
         &.active
           visibility visible
   &.active
-    .point:not(.active)
-      fill-opacity 0.05
     g.highlight:not(.active)
       display none
     .col:nth-child(2)
       .feature:not(.active)
-        opacity 0.2
+        opacity 0.5
         fill rgb(247,252,185)
     .col:nth-child(4)
       svg
         .feature:not(.active)
-          opacity 0.2
+          opacity 0.8
           fill rgb(239,237,245)
     .survival-line
-      opacity 0
+      opacity 0.4
+      g
+        opacity 0
   .col:nth-child(3)
     display none
   .col:nth-child(2)
