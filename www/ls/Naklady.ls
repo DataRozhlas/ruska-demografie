@@ -113,7 +113,7 @@ class ig.Naklady
     @voronoi = d3.geom.voronoi!
       ..x ~> @padding.left + it.x
       ..y ~> @padding.top + it.y
-      ..clipExtent [[0, 0], [@width, @height]]
+      ..clipExtent [[230, 0], [@width, @height]]
     voronoiPolygons = @voronoi points
       .filter -> it
     @svg.append \g
