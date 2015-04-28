@@ -17,7 +17,7 @@ getCeskoRuskoFields = ->
     title: "Věk dožití"
     subtitle: "Očekávaný věk dožití při narození"
   "externi-umrti":
-    title: "Úmrtí na externí příčiny"
+    title: "Nepřirozená úmrtí"
     subtitle: "Počet úmrtí na 1000 obyvatel"
   plodnost:
     title: "Plodnost"
