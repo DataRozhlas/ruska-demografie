@@ -86,8 +86,8 @@ class ig.Naklady
               ..attr \y yScale
               ..text -> "#{ig.utils.formatNumber it * 100, 2} %"
               ..attr \dy 15
-              ..attr \text-anchor \end
-              ..attr \dx -9
+              ..attr \text-anchor (d, i) -> if i then \end else \start
+              ..attr \dx (d, i) -> if i then -9 else 12
     @lines = @svg.selectAll \g.line
     @labels = @svg.selectAll \g.label
     @addPopisek do
