@@ -83,7 +83,7 @@ getExterni = ->
   out
 
 getNaklady = ->
-  countries = <[in ru cz de]>
+  countries = <[ru in cz de]>
   lines = d3.tsv.parse ig.data.naklady, (row) ->
     line =
       type: row['expense-type']

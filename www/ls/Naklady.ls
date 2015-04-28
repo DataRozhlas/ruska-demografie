@@ -95,9 +95,9 @@ class ig.Naklady
       @yScale 0.285
       "Rusové i Indové platí nejvíc za jídlo, téměř třetinu příjmů.<br>To je charakteristické pro rozvojové ekonomiky."
     @addPopisek do
-      @yScale 0.145
+      @yScale 0.165
       @yScale 0.10
-      "Naopak mají poloviční náklady spojené s bydlením. V Rusku cenu snižují státní dotace na energie"
+      "Naopak mají poloviční náklady spojené s bydlením. Za nízkou cenu energií může ruské nerostné bohatství, za levné nájmy neliberalizovaný trh s nemovitostmi."
     @addPopisek do
       @yScale 0.08
       @yScale 0.03
