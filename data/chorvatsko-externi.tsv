@@ -1,5 +1,5 @@
-rok	sebevrazdy	dopravni-nehody	nasilna-smrt	valecna-smrt
-1990	0.350	0.372	0.040	0.000
-1991	0.335	0.325	0.056	1.264
-1992	0.370	0.290	0.080	0.841
-1993	0.335	0.216	0.073	0.291
+rok	sebevrazdy	otrava-alkoholem	nasilna-smrt	valecna-smrt
+1990	0.350	0,020	0.040	0.000
+1991	0.335	0,019	0.056	1.264
+1992	0.370	0,016	0.080	0.841
+1993	0.335	0,019	0.073	0.291
