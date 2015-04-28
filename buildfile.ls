@@ -280,13 +280,13 @@ switch task
   combine-scripts compression: no
 
 | \deploy
+  <~ build-styles compression: yes deploy: yes
   <~ async.parallel do
     * download-external-scripts
       download-external-data
       download-external-styles
       # build-all-server-scripts!
       # refresh-manifest!
-  <~ build-styles compression: yes deploy: yes
   <~ build-all-scripts
   <~ combine-scripts compression: yes deploy: yes
   <~ inject-index!
