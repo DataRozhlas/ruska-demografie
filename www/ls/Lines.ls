@@ -47,6 +47,7 @@ class ig.Lines
         ..x ~> @xScales[i] it.x
         ..y ~> @yScales[i] it.y
     @parentElement.selectAll \.line .data @data
+      ..html ''
       ..append \h3
         ..html (.title)
       ..append \h4

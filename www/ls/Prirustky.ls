@@ -108,7 +108,9 @@ class ig.Prirustky
   drawMap: (features) ->
     {geo} = ig.utils
     col = @parentElement.select "div.col:nth-child(4) div"
+      ..html ''
     col2 = @parentElement.select "div.col:nth-child(2) div"
+      ..html ''
     col
       ..append \h3
         ..html "Podíl neruské populace"
