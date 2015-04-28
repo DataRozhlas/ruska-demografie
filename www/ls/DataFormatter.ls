@@ -17,7 +17,7 @@ getCeskoRuskoFields = ->
     title: "Věk dožití"
     subtitle: "Očekávaný věk dožití při narození"
   "externi-umrti":
-    title: "Úmrtí na externí příčiny"
+    title: "Nepřirozená úmrtí"
     subtitle: "Počet úmrtí na 1000 obyvatel"
   plodnost:
     title: "Plodnost"
@@ -36,9 +36,9 @@ getExternalFields = ->
   "sebevrazdy":
     title: "Sebevraždy"
     subtitle: "Sebevražd na 1000 obyvatel"
-  "dopravni-nehody":
-    title: "Dopravní nehody"
-    subtitle: "Úmrtí při DN na 1000 obyvatel"
+  "otrava-alkoholem":
+    title: "Otrava alkoholem"
+    subtitle: "Úmrtí na 1000 obyvatel"
 
 getRusko92 = (country) ->
   fields = getCeskoRuskoFields!
@@ -76,7 +76,7 @@ getExterni = ->
   out[0, 4, 8].forEach (.fixedYExtent = [0.04, 0.53])
   out[1, 5, 9].forEach (.fixedYExtent = [0, 1.27])
   out[2, 6, 10].forEach (.fixedYExtent = [0.07, 0.75])
-  out[3, 7, 11].forEach (.fixedYExtent = [0.22, 0.51])
+  out[3, 7, 11].forEach (.fixedYExtent = [0, 0.83])
   out[0 to 3].forEach (.fixedXExtent = [1989 1996])
   out[4 to 7].forEach (.fixedXExtent = [1989 1996])
   out[8 to 11].forEach (.fixedXExtent = [2005 2012])

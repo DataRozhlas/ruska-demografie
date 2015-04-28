@@ -5,7 +5,7 @@ ig.fit = ->
   $body = $ 'body'
   $hero = $ "<div class='hero'></div>"
     ..append "<div class='overlay'></div>"
-    ..append "<span class='copy'><em>Štěstí je za horami</em>, fotografie CC BY <a href='https://www.flickr.com/photos/dmitry_kolesnikov/6842797721' target='_blank'>Dmitry Kolesnikov</a>, Flickr</span>"
+    ..append "<span class='copy'><em>Štěstí je za horami</em><br>fotografie CC BY <a href='https://www.flickr.com/photos/dmitry_kolesnikov/6842797721' target='_blank'>Dmitry Kolesnikov</a>, Flickr</span>"
     ..append "<a href='#' class='scroll-btn'>Číst dál</a>"
     ..find 'a.scroll-btn' .bind 'click touchstart' (evt) ->
       evt.preventDefault!
