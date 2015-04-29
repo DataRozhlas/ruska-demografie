@@ -24,7 +24,7 @@ getCeskoRuskoFields = ->
     subtitle: "Počet dětí na jednu ženu v produkt. věku"
   prirustek:
     title: "Přírůstek obyvatel"
-    subtitle: "Kolikrát více lidí se narodilo než, umřelo"
+    subtitle: "Kolikrát více lidí se narodilo, než umřelo"
 
 getExternalFields = ->
   "nasilna-smrt":
