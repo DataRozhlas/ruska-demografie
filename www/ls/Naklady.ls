@@ -7,6 +7,7 @@ class ig.Naklady
   (@parentElement, @data) ->
     @graph = @parentElement.select \.graph
     {clientWidth:@width} = @graph.node!
+    @graph.html ''
     @height = 390
     @padding = top: 30px right: 262px  bottom: 20px left: 262px
     @innerWidth  = @width - (@padding.left + @padding.right)
